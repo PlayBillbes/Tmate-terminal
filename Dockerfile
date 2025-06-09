@@ -48,7 +48,7 @@ RUN chmod +x /usr/local/bin/start.sh
 
 # Switch to the non-root user for running the application.
 # This is a critical security best practice.
-USER myuser
+USER 100011
 
 # Set the command to be executed when the container starts.
 # Use the exec form for CMD to ensure signals are properly handled.
