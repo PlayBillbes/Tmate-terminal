@@ -9,7 +9,7 @@ RUN apt update && \
 WORKDIR /app
     
 RUN echo "Terminal ativo via tmate..." > index.html
-RUN groupadd -r myuser && useradd -r -g myuser myuser
+RUN groupadd -r myuser && useradd --uid 100011 -r -g myuser myuser
 RUN apt-get update && apt-get install -y sudo
 RUN echo 'myuser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
@@ -25,4 +25,4 @@ RUN chmod +x /start.sh
 # Iniciar script
 CMD ["/start.sh"]
 
-USER myuser
+USER 100011
