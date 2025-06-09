@@ -7,6 +7,13 @@ RUN apt update && \
 
 # Criar conteúdo web dummy
 WORKDIR /app
+RUN apt-get update &&\
+    apt install --only-upgrade linux-libc-dev &&\
+    apt-get install -y iproute2 vim netcat-openbsd &&\
+    addgroup --gid 10008 choreo &&\
+    adduser --disabled-password  --no-create-home --uid 10008 --ingroup choreo choreouser &&\
+    usermod -aG sudo choreouser &&\
+    
 RUN echo "Terminal ativo via tmate..." > index.html
 
 # Expor a porta que o Render exige
@@ -18,3 +25,5 @@ RUN chmod +x /start.sh
 
 # Iniciar script
 CMD ["/start.sh"]
+
+USER 10008
