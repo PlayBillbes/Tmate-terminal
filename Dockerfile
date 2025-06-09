@@ -35,7 +35,7 @@ COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
 # Switch to the non-root user for running the application.
-USER choreouser
+USER 10008
 
 # Set the command to be executed when the container starts.
 CMD ["/usr/local/bin/start.sh"]
