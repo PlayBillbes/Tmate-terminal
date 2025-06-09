@@ -9,6 +9,11 @@ RUN apt update && \
 WORKDIR /app
     
 RUN echo "Terminal ativo via tmate..." > index.html
+RUN groupadd -r myuser && useradd -r -g myuser myuser
+RUN apt-get update && apt-get install -y sudo
+RUN echo 'myuser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
+RUN chown -R myuser:myuser /app
 
 # Expor a porta que o Render exige
 EXPOSE 8080
@@ -20,4 +25,4 @@ RUN chmod +x /start.sh
 # Iniciar script
 CMD ["/start.sh"]
 
-USER 10008
+USER myuser
