@@ -1,0 +1,5 @@
+{
+  "persistentDataPath": "/data",
+  "tmateSocketPath": "/tmp/tmate.sock",
+  "webServerRoot": "/app"
+}
